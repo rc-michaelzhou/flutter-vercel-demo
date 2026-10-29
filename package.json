@@ -1,0 +1,15 @@
+{
+    "name": "flutter-vercel-demo",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "install:flutter": "export DART_CLI_SKIP_DART_SDK=true && git clone --depth 1 -b stable https://github.com/flutter/flutter.git $HOME/flutter && $HOME/flutter/bin/flutter --disable-analytics && $HOME/flutter/bin/flutter --version",
+        "build:web": "cd flutter-vercel-demo && $HOME/flutter/bin/flutter build web --release",
+        "copy:output": "mkdir -p .vercel/output/static && cp -R flutter-vercel-demo/build/web/. .vercel/output/static/",
+        "build": "npm run install:flutter && npm run build:web && npm run copy:output"
+    },
+    "devDependencies": {
+        "@vercel/static-build": "^25.0.1",
+        "vercel": "^65.7.0"
+    }
+}
