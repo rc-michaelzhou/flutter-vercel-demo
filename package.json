@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "install:flutter": "export DART_CLI_SKIP_DART_SDK=true && { test -d \"$HOME/flutter/.git\" && echo 'Flutter SDK present, skipping clone' || git clone --depth 1 -b stable https://github.com/flutter/flutter.git \"$HOME/flutter\"; } && \"$HOME/flutter/bin/flutter\" --disable-analytics && \"$HOME/flutter/bin/flutter\" --version",
-        "build:web": "cd flutter-vercel-demo && $HOME/flutter/bin/flutter build web --release",
-        "copy:output": "mkdir -p .vercel/output/static && cp -R flutter-vercel-demo/build/web/. .vercel/output/static/",
-        "build": "npm run install:flutter && npm run build:web && npm run copy:output"
+        "build": "sh scripts/build.sh",
+        "install:flutter": "sh scripts/install-flutter.sh",
+        "build:web": "sh scripts/build-web.sh",
+        "copy:output": "sh scripts/copy-output.sh"
     },
     "devDependencies": {
         "@vercel/static-build": "^25.0.1",
